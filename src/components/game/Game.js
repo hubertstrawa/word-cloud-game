@@ -13,7 +13,7 @@ const Game = () => {
   const [isDrawerVisible, setIsDrawerVisible] = useState(false);
   const [shouldShowBadge, setShouldShowBadge] = useState(false);
   const navigate = useNavigate();
-  const { category: data, player } = useSelector((state) => state.game);
+  const { category: data } = useSelector((state) => state.game);
 
   const handleCloseDrawer = () => {
     setIsDrawerVisible(false);
