@@ -1,24 +1,20 @@
-import logo from './logo.svg';
+import Game from './components/game/Game';
+import { Routes, Route } from 'react-router-dom';
+import Welcome from './components/welcome/Welcome';
+import NotSignedIn from './components/not_signed_in/NotSignedIn';
 import './App.css';
+import { useSelector } from 'react-redux';
 
 function App() {
+  const { player } = useSelector((state) => state.game);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <main className='app'>
+      <Routes>
+        <Route path='/' element={<Welcome />} />
+        <Route path='game' element={player ? <Game /> : <NotSignedIn />} />
+      </Routes>
+    </main>
   );
 }
 
