@@ -1,58 +1,14 @@
 import { Button, Input, Row, Select } from 'antd';
-import { useState } from 'react';
-// const {useDispatch} from
 import { gameActions } from '../../store/game-slice';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { UserOutlined, MessageOutlined } from '@ant-design/icons';
 import styles from './Welcome.module.css';
 
-const data = [
-  {
-    question: 'Select animals',
-    all_words: [
-      'hole',
-      'sofa',
-      'pear',
-      'tiger',
-      'oatmeal',
-      'square',
-      'nut',
-      'cub',
-      'shirt',
-      'tub',
-      'passenger',
-      'cow',
-    ],
-    good_words: ['tiger', 'cow'],
-  },
-  {
-    question: 'Select cars',
-    all_words: [
-      'hole',
-      'sofa',
-      'pear',
-      'toyota',
-      'ford',
-      'square',
-      'nut',
-      'cub',
-      'shirt',
-      'tub',
-      'passenger',
-      'cow',
-    ],
-    good_words: ['toyota', 'ford'],
-  },
-];
-
 const Welcome = () => {
-  const [playerName, setPlayerName] = useState('');
   const dispatch = useDispatch();
   const { player, categories } = useSelector((state) => state.game);
   const { Option } = Select;
-
-  console.log('TESTTT', player);
 
   const playerNameHandler = (e) => {
     dispatch(gameActions.setPlayer(e.target.value));
@@ -61,7 +17,6 @@ const Welcome = () => {
   const navigate = useNavigate();
 
   const startGameHandler = () => {
-    // dispatch(gameActions.setPlayer(playerName));
     navigate('/game');
   };
 
@@ -69,7 +24,6 @@ const Welcome = () => {
     const foundCategory = categories.find((singleCategory) => {
       return singleCategory.question === value;
     });
-    console.log('foundCategory', foundCategory);
     dispatch(gameActions.chooseCategory(foundCategory));
   }
 

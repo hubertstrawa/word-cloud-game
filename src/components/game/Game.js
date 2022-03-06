@@ -15,8 +15,6 @@ const Game = () => {
   const navigate = useNavigate();
   const { category: data, player } = useSelector((state) => state.game);
 
-  console.log('player', player);
-
   const handleCloseDrawer = () => {
     setIsDrawerVisible(false);
   };
